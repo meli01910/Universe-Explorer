@@ -1,4 +1,6 @@
-# AstronomieSite
+# Universe explorer en Angular
+
+Ce projet est une application web interactive qui permet d'explorer les planètes, étoiles et galaxies du système solaire. Il a été développé avec Angular et utilise des animations CSS pour une expérience utilisateur immersive.
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.8.
 
