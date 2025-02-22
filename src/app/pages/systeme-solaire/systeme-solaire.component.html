@@ -1,0 +1,61 @@
+<!-- planets.component.html -->
+<div class="relative min-h-screen space-gradient">
+    <div class="stars"></div>
+    
+    <div class="container mx-auto px-4 py-12 relative z-10">
+     <h1
+     
+        class="text-4xl md:text-6xl font-bold mb-12 text-center">
+        Les Planètes du Système Solaire
+      </h1>
+  
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div
+          *ngFor="let planet of planets; let i = index"
+          @fadeInOut
+          [style.animation-delay]="i * 100 + 'ms'"
+          class="planet-card flex flex-col items-center text-center">
+          
+          <div class="w-32 h-32 mb-4 relative">
+            
+            <img
+              [src]="planet.image"
+              [alt]="planet.name"
+              
+              class="w-full h-full object-contain"
+             
+            >
+            
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-2">{{planet.name}}</h3>
+          <p class="text-space-light/70 text-sm">{{planet.description}}</p>
+          <button
+          (click)="voirDetails(planet)"
+          class="learn-more-btn">
+          En savoir plus
+        </button>
+        </div>
+      </div>
+    </div>
+      <!-- Modale pour afficher les détails de la planète -->
+      <div *ngIf="selectedPlanet" class="modal-overlay">
+        <div class ="modal">
+        <div class="modal-content">
+          <h2>{{ selectedPlanet.name }}</h2>
+          <img [src]="selectedPlanet.image" [alt]="selectedPlanet.name" />
+          <div *ngIf="selectedPlanet.details">
+            <p><strong>Distance du Soleil :</strong> {{ selectedPlanet.details.distanceFromSun }}</p>
+            <p><strong>Température :</strong> {{ selectedPlanet.details.temperature }}</p>
+            <p><strong>Durée d'une année :</strong> {{ selectedPlanet.details.orbitalPeriod }}</p>
+            <p><strong>Nombre de lunes :</strong> {{ selectedPlanet.details.moons }}</p>
+            <p><strong>Fun Fact :</strong> {{ selectedPlanet.details.funFact }}</p>
+          </div>
+          <button (click)="closeModal()">Fermer</button>
+        </div>
+      </div>
+      </div>
+  </div>
+ 
+  
+ 

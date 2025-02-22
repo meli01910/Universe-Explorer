@@ -1,0 +1,33 @@
+
+
+<div class="relative min-h-screen space-gradient">
+  <div class="stars"></div>
+  
+  <div class="container mx-auto px-4 py-12 relative z-10">
+      <h1 class="text-4xl md:text-6xl font-bold mb-12 text-center">
+      Actualité du Jour 
+      </h1>
+
+      <div class="nasa-apod">
+     
+        <div *ngFor="let news of newsList" class="news-item">
+      
+      
+          <div class="image-container">
+          <img [src]="news.url" [alt]="news.title" class="apod-image" />
+        </div>
+          <h3>{{ news.title }}</h3>
+          <div class="info-container">
+            <p class="date">Date: {{news.date}}</p>
+      
+            <p class="explanation">{{ news.explanation }}</p>
+         
+        </div>
+     
+  </div>
+
+  
+</div>
+
+  </div>
+</div>

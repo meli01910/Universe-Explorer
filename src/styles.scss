@@ -1,1 +1,181 @@
-/* You can add global styles to this file, and also import other style files */
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+
+// Utiliser les variables SCSS
+$space-dark: #0B0D17;
+$space-blue: #1B1F45;
+$space-purple: #2C1B47;
+$space-accent: #7B53AD;
+$space-light: #E6E6FA;
+
+
+
+body { margin: 0; font-family: Arial, "Helvetica Neue", sans-serif; }
+:host {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+
+.relative {
+  position: relative;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.space-gradient {
+  background: linear-gradient(to bottom, #0B0D17 0%, #1B1F45 100%);
+}
+
+button {
+  background: transparent;
+  border: none;
+  color: rgba(230, 230, 250, 0.8);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+      color: rgba(230, 230, 250, 1);
+      transform: scale(1.05);
+  }
+
+  i {
+      font-size: 1.5rem;
+  }
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 3rem;
+  letter-spacing: 0.1em;
+  background: linear-gradient(to right, #E6E6FA, #8B5CF6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+
+  @media (min-width: 768px) {
+      font-size: 4rem;
+  }
+}
+
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 3rem;
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.star-card {
+  background-color: black;
+  border-radius: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 2.5rem;
+  text-align: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+  }
+
+  &::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      animation: rotate 10s linear infinite;
+      z-index: -1;
+  }
+
+  .w-32 {
+      width: 14rem;
+      height: 14rem;
+      margin: 0 auto 2rem;
+      position: relative;
+
+      img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          transition: transform 0.5s ease;
+
+          &:hover {
+              transform: rotate(360deg) scale(1.1);
+          }
+      }
+  }
+
+  h3 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+  }
+
+  p {
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.6;
+  }
+}
+
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: 
+      radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+      radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+      radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0,0,0,0)),
+      radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0)),
+      radial-gradient(2px 2px at 130px 80px, #fff, rgba(0,0,0,0));
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  animation: stars-animation 100s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes stars-animation {
+  from {
+      transform: translateY(0);
+  }
+  to {
+      transform: translateY(-100%);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-20px);
+  }
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}

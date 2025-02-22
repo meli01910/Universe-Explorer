@@ -1,0 +1,95 @@
+// Variables
+$space-dark: #000000;
+$space-light: #1a1a4a;
+$accent-color: #4a89dc;
+$text-light: #ffffff;
+
+// Mixins
+@mixin glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+// Styles globaux
+:host {
+  display: block;
+  background: linear-gradient(135deg, $space-dark, $space-light);
+  color: $text-light;
+}
+
+// Hero Section
+.hero {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .stars-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(1px 1px at 20px 30px, white, rgba(0,0,0,0)),
+      radial-gradient(1px 1px at 40px 70px, white, rgba(0,0,0,0)),
+      radial-gradient(1px 1px at 50px 160px, white, rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    animation: moveStars 100s linear infinite;
+  }
+
+  .hero-content {
+    text-align: center;
+    z-index: 1;
+    padding: 2rem;
+
+    h1 {
+      font-size: clamp(3rem, 8vw, 5rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(120deg, $text-light, $accent-color);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p {
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      margin-bottom: 3rem;
+      opacity: 0.8;
+    }
+  }
+
+  .hero-nav {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .nav-button {
+      @include glass-effect;
+      padding: 1.5rem 2.5rem;
+      border-radius: 15px;
+      text-decoration: none;
+      color: $text-light;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+
+      .icon {
+        font-size: 2rem;
+      }
+
+      &:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.2);
+      }
+    }
+  }
+
+}

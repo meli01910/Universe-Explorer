@@ -1,0 +1,52 @@
+
+<div class="relative min-h-screen space-gradient">
+    <div class="stars"></div>
+    
+    <div class="container mx-auto px-4 py-12 relative z-10">
+        <h1 class="text-4xl md:text-6xl font-bold mb-12 text-center">
+            Les Étoiles 
+        </h1>
+  
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div
+                *ngFor="let star of stars; let i = index"
+                @fadeInOut
+                [style.animation-delay]="i * 100 + 'ms'"
+                class="star-card flex flex-col items-center text-center">
+                
+                <div class="w-32 h-32 mb-4 relative">
+                    <img
+                        [src]="star.image"
+                        [alt]="star.name"
+                        class="w-full h-full object-contain"
+                    >
+                </div>
+                
+                <h3 class="text-xl font-semibold mb-2">{{star.name}}</h3>
+                <p class="text-space-light/70 text-sm">{{star.description}}</p>
+                <button
+                    (click)="voirDetails(star)"
+                    class="learn-more-btn">
+                    En savoir plus
+                </button>
+            </div>
+        </div>
+    </div>
+  
+    <!-- Modale pour afficher les détails de l'étoile -->
+    <div *ngIf="selectedStar" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-content">
+                <h2>{{ selectedStar.name }}</h2>
+                    <div *ngIf="selectedStar.details">
+                    <p><strong>Distance de la Terre :</strong> {{ selectedStar.details.distanceFromEarth }}</p>
+                    <p><strong>Température :</strong> {{ selectedStar.details.temperature }}</p>
+                    <p><strong>Type spectral :</strong> {{ selectedStar.details.spectralType }}</p>
+                    <p><strong>Magnitude apparente :</strong> {{ selectedStar.details.apparentMagnitude }}</p>
+                    <p><strong>Fun Fact :</strong> {{ selectedStar.details.funFact }}</p>
+                </div>
+                <button (click)="closeModal()">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
