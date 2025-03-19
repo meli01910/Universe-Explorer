@@ -43,8 +43,7 @@
         <div class ="modal">
         <div class="modal-content">
           <h2>{{ selectedPlanet.name }}</h2>
-          <img [src]="selectedPlanet.image" [alt]="selectedPlanet.name" />
-          <div *ngIf="selectedPlanet.details">
+            <div *ngIf="selectedPlanet.details">
             <p><strong>Distance du Soleil :</strong> {{ selectedPlanet.details.distanceFromSun }}</p>
             <p><strong>Température :</strong> {{ selectedPlanet.details.temperature }}</p>
             <p><strong>Durée d'une année :</strong> {{ selectedPlanet.details.orbitalPeriod }}</p>
